@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="UtilityAIBehavior" load_steps=6 format=3 uid="uid://xvhg7usd78rv"]
+
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_response_curve.gd" id="1_fy666"]
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_consideration.gd" id="2_pnvba"]
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_behavior.gd" id="3_qti0o"]
+
+[sub_resource type="Curve" id="Curve_g2uku"]
+_data = [Vector2(0, 0.268941), 0.0, 0.410841, 1, 1, Vector2(0.1, 0.310026), 0.410841, 0.443182, 1, 1, Vector2(0.2, 0.354344), 0.443182, 0.469687, 1, 1, Vector2(0.3, 0.401312), 0.469687, 0.488537, 1, 1, Vector2(0.4, 0.450166), 0.488537, 0.49834, 1, 1, Vector2(0.5, 0.5), 0.49834, 0.49834, 1, 1, Vector2(0.6, 0.549834), 0.49834, 0.488537, 1, 1, Vector2(0.7, 0.598688), 0.488537, 0.469686, 1, 1, Vector2(0.8, 0.645656), 0.469686, 0.443182, 1, 1, Vector2(0.9, 0.689974), 0.443182, 0.410841, 1, 1, Vector2(1, 0.731059), 0.410841, 0.0, 1, 1]
+point_count = 11
+script = ExtResource("1_fy666")
+curve_type = 3
+exponent = 2
+slope = 1
+x_shift = 0.0
+y_shift = 0.0
+
+[sub_resource type="Resource" id="Resource_x8wew"]
+script = ExtResource("2_pnvba")
+input_key = "fun"
+invert = true
+response_curve = SubResource("Curve_g2uku")
+
+[resource]
+script = ExtResource("3_qti0o")
+name = &"watch_tv"
+aggregation = 0
+considerations = Array[ExtResource("2_pnvba")]([SubResource("Resource_x8wew")])

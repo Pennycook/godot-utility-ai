@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="UtilityAIBehavior" load_steps=6 format=3 uid="uid://caj2mipxrrx25"]
+
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_response_curve.gd" id="1_tg0b3"]
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_consideration.gd" id="2_g70b1"]
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_behavior.gd" id="3_o5u3o"]
+
+[sub_resource type="Curve" id="Curve_renef"]
+_data = [Vector2(0, 0), 0.0, 1e-11, 1, 1, Vector2(0.1, 1e-12), 1e-11, 4.095e-08, 1, 1, Vector2(0.2, 4.096e-09), 4.095e-08, 5.27345e-06, 1, 1, Vector2(0.3, 5.31441e-07), 5.27345e-06, 0.000162458, 1, 1, Vector2(0.4, 1.67772e-05), 0.000162458, 0.00227363, 1, 1, Vector2(0.5, 0.000244141), 0.00227363, 0.0193264, 1, 1, Vector2(0.6, 0.00217678), 0.0193264, 0.116645, 1, 1, Vector2(0.7, 0.0138413), 0.116645, 0.548782, 1, 1, Vector2(0.8, 0.0687195), 0.548782, 2.1371, 1, 1, Vector2(0.9, 0.28243), 2.1371, 7.1757, 1, 1, Vector2(1, 1), 7.1757, 0.0, 1, 1]
+point_count = 11
+script = ExtResource("1_tg0b3")
+curve_type = 2
+exponent = 12
+slope = 1
+x_shift = 0.0
+y_shift = 0.0
+
+[sub_resource type="Resource" id="Resource_345ta"]
+script = ExtResource("2_g70b1")
+input_key = "hp"
+invert = true
+response_curve = SubResource("Curve_renef")
+
+[resource]
+script = ExtResource("3_o5u3o")
+name = &"escape"
+aggregation = 0
+considerations = Array[ExtResource("2_g70b1")]([SubResource("Resource_345ta")])

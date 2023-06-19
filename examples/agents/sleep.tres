@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="UtilityAIBehavior" load_steps=6 format=3 uid="uid://bkwladxx8cf6c"]
+
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_response_curve.gd" id="1_b4gtf"]
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_consideration.gd" id="2_bxjpn"]
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_behavior.gd" id="3_ts7r7"]
+
+[sub_resource type="Curve" id="Curve_vq155"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+script = ExtResource("1_b4gtf")
+curve_type = 0
+exponent = 10
+slope = 1
+x_shift = 0.25
+y_shift = 0.0
+
+[sub_resource type="Resource" id="Resource_4lrdu"]
+script = ExtResource("2_bxjpn")
+input_key = "energy"
+invert = true
+response_curve = SubResource("Curve_vq155")
+
+[resource]
+script = ExtResource("3_ts7r7")
+name = &"sleep"
+aggregation = 0
+considerations = Array[ExtResource("2_bxjpn")]([SubResource("Resource_4lrdu")])

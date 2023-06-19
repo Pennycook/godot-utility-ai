@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="UtilityAIConsideration" load_steps=4 format=3 uid="uid://csarjuhatbjug"]
+
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_response_curve.gd" id="1_apouu"]
+[ext_resource type="Script" path="res://addons/utility_ai/core/utility_ai_consideration.gd" id="1_xpap3"]
+
+[sub_resource type="Curve" id="Curve_du6y7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+script = ExtResource("1_apouu")
+curve_type = 0
+exponent = 2
+slope = 1
+x_shift = 0.0
+y_shift = 0.0
+
+[resource]
+script = ExtResource("1_xpap3")
+input_key = "mp"
+invert = false
+response_curve = SubResource("Curve_du6y7")

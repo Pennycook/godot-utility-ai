@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://df642cgly5okr"]
+
+[ext_resource type="Script" path="res://examples/agents/agent.gd" id="1_esxyg"]
+[ext_resource type="Script" path="res://examples/agents/agent_example.gd" id="1_kjrhq"]
+[ext_resource type="Script" path="res://examples/agents/needs_observer.gd" id="3_cib1g"]
+[ext_resource type="Script" path="res://examples/agents/agent_needs.gd" id="3_hk7vr"]
+[ext_resource type="Script" path="res://examples/agents/state_observer.gd" id="5_pl8xg"]
+
+[sub_resource type="Resource" id="Resource_1r6we"]
+script = ExtResource("3_hk7vr")
+food = 0.5
+fun = 0.5
+energy = 0.5
+
+[node name="AgentExample" type="Node"]
+script = ExtResource("1_kjrhq")
+
+[node name="Agent" type="Node2D" parent="."]
+script = ExtResource("1_esxyg")
+needs = SubResource("Resource_1r6we")
+
+[node name="Timer" type="Timer" parent="Agent"]
+autostart = true
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="GUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -59.5
+offset_right = 92.0
+offset_bottom = 59.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="State" type="VBoxContainer" parent="GUI/Panel"]
+layout_mode = 2
+
+[node name="Needs" type="VBoxContainer" parent="GUI/Panel/State"]
+layout_mode = 2
+
+[node name="Food" type="HBoxContainer" parent="GUI/Panel/State/Needs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Panel/State/Needs/Food"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Food:"
+horizontal_alignment = 2
+
+[node name="FoodBar" type="ProgressBar" parent="GUI/Panel/State/Needs/Food"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+value = 0.5
+script = ExtResource("3_cib1g")
+
+[node name="Fun" type="HBoxContainer" parent="GUI/Panel/State/Needs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Panel/State/Needs/Fun"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Fun:
+"
+horizontal_alignment = 2
+
+[node name="FunBar" type="ProgressBar" parent="GUI/Panel/State/Needs/Fun"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+value = 0.5
+script = ExtResource("3_cib1g")
+
+[node name="Energy" type="HBoxContainer" parent="GUI/Panel/State/Needs"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Panel/State/Needs/Energy"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Energy:"
+horizontal_alignment = 2
+
+[node name="EnergyBar" type="ProgressBar" parent="GUI/Panel/State/Needs/Energy"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+value = 0.5
+script = ExtResource("3_cib1g")
+
+[node name="Decision" type="HBoxContainer" parent="GUI/Panel/State"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GUI/Panel/State/Decision"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Decision: "
+horizontal_alignment = 2
+
+[node name="StateLabel" type="Label" parent="GUI/Panel/State/Decision"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+script = ExtResource("5_pl8xg")
+
+[connection signal="timeout" from="Agent/Timer" to="Agent" method="_on_timer_timeout"]
