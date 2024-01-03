@@ -67,7 +67,7 @@ func _set(property: StringName, value: Variant) -> bool:
 			TYPE_STRING:
 				action = String()
 			TYPE_OBJECT:
-				action = Object()
+				action = Object.new()
 			TYPE_DICTIONARY:
 				action = Dictionary()
 			TYPE_ARRAY:
