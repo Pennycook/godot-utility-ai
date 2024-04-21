@@ -23,7 +23,7 @@ body:
       options:
         - 0.1.0
         - 0.2.0
-      default: 2
+      default: 1
     validations:
       required: true
   - type: dropdown
