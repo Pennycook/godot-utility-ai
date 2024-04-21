@@ -1,0 +1,23 @@
+name: Check GDScript formatting and style
+
+permissions: read-all
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'addons/**'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'addons/**'
+
+jobs:
+  static-checks:
+    name: 'static checks'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: Scony/godot-gdscript-toolkit@master
+    - run: gdformat --check addons/
+    - run: gdlint addons/

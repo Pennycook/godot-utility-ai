@@ -1,0 +1,35 @@
+name: Feature request
+description: Suggest new functionality for the plugin.
+labels: ["enhancement"]
+assignees:
+  - pennycook
+body:
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Description
+      description: |
+        Describe, in as much detail as possible, what your new feature would do.
+        What problem(s) does it solve?
+    validations:
+      required: true
+  - type: dropdown
+    id: contribution
+    attributes:
+      label: Contribution Request
+      description: |
+        Would you be willing to help with the development of this feature?
+      options:
+        - "No"
+        - "Yes"
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: reproducer
+    attributes:
+      label: Additional Notes (Optional)
+      description: |
+        Please add any additional context that you think may be helpful here.
+    validations:
+      required: false

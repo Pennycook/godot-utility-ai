@@ -1,0 +1,57 @@
+name: Bug report
+description: File a bug report when something doesn't work.
+labels: ["bug"]
+assignees:
+  - pennycook
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report a bug.
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: Describe, in as much detail as possible, what went wrong.
+    validations:
+      required: true
+  - type: dropdown
+    id: plugin-version
+    attributes:
+      label: Plugin Version
+      description: What version of the plugin are you using?
+      options:
+        - 0.1.0
+        - 0.2.0
+      default: 2
+    validations:
+      required: true
+  - type: dropdown
+    id: godot-version
+    attributes:
+      label: Godot Version
+      description: What version of Godot are you using?
+      options:
+        - 4.0
+        - 4.1
+        - 4.2
+        - 4.3
+      default: 2
+    validations:
+      required: true
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Provide step-by-step instructions to reproduce the bug.
+    validations:
+      required: true
+  - type: textarea
+    id: reproducer
+    attributes:
+      label: Reproducer (Optional)
+      description: |
+        Provide a small Godot project or script that demonstrates the bug.
+        You can provide scripts here, or attach a Godot project as a ZIP file.
+    validations:
+      required: false
